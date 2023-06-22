@@ -61,6 +61,13 @@ class CouponserviceApplicationTests {
 		assertEquals(new BigDecimal(10), couponResponse.getDiscount());
 	}
 	
+	@Test
+	public void testCreate_WHEN_CODE_IS_NULL_THROW_EXCEPTION() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller.getCoupon(null);
+		});
+		
+	}
 	
 }
 
