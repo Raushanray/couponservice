@@ -48,5 +48,19 @@ class CouponserviceApplicationTests {
 		
 	}
 	
+	@Test
+	public void testGetCoupon() {
+		Coupon coupon = new Coupon();
+		coupon.setId(123l);
+		coupon.setCode(SUPERSALE);
+		coupon.setDiscount(new BigDecimal(10));
+		when(repo.findByCode(SUPERSALE)).thenReturn(coupon);
+		Coupon couponResponse = controller.getCoupon(SUPERSALE);
+		verify(repo).findByCode(SUPERSALE);
+		assertNotNull(couponResponse);
+		assertEquals(new BigDecimal(10), couponResponse.getDiscount());
+	}
+	
+	
 }
 
