@@ -38,4 +38,15 @@ class CouponserviceApplicationTests {
 		assertEquals(SUPERSALE, coupon.getCode());
 
 	}
+   
+	@Test
+	public void testCreate_WHEN_COUPON_IS_NULL_THROW_EXCEPTION() {
+		assertThrows(IllegalArgumentException.class, () -> {
+			controller.create(null);
+		});
+		
+		
+	}
+	
 }
+
